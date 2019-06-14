@@ -46,6 +46,7 @@ public class LongestSubString {
 //        System.out.println(result8);
     }
 
+    // 双指针法
     public int lengthOfLongestSubString(String s){
         if (s == null || s.equals("")){
             return 0;

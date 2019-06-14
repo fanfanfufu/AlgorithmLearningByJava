@@ -11,6 +11,9 @@ import java.util.Map;
  * @Version V1.0
  */
 public class TwoSum {
+    // 最优方法：一遍Hash表
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(n)
     public int[] twoSum(int[] numbers, int target){
         Map<Integer, Integer> numMap = new HashMap<>();
 
@@ -26,5 +29,18 @@ public class TwoSum {
             numMap.put(numbers[i], i);
         }
         throw new IllegalArgumentException("there's no number matches the condition.");
+    }
+
+    // 暴力解法：O(n^2)
+    // 空间复杂度：O(1)
+    public int[] forceMethod(int[] numbers, int target){
+        for (int i = 0; i < numbers.length-1; i++) {
+            for (int j = i+1; j < numbers.length; j++) {
+                if (numbers[i] == target - numbers[j]){
+                    return new int[]{i, j};
+                }
+            }
+        }
+        throw new IllegalArgumentException("No tow sum solution");
     }
 }
