@@ -1,5 +1,8 @@
 package com.fuqi.month06.day0616;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 /**
  * @Description:
  * @Team: 电子科技大学自动化研究所
@@ -47,22 +50,33 @@ public class ShortestPathInBinaryMatrix {
                 if (grid[i][j] == 1){
                     dp[i][j] = 0;
                 }else {
-                    if (dp[i][j-1] == 0 && dp[i-1][j-1] == 0 && dp[i-1][j] == 0){
-                        dp[j][j] = 0;
-                    }else if (dp[i][j-1] != 0 && dp[i-1][j-1] == 0 && dp[i-1][j] == 0){
-                        dp[i][j] = dp[i][j-1] + 1;
-                    }else if (dp[i][j-1] == 0 && dp[i-1][j-1] != 0 && dp[i-1][j] == 0){
-                        dp[i][j] = dp[i-1][j-1] + 1;
-                    }else if (dp[i][j-1] == 0 && dp[i-1][j-1] == 0 && dp[i-1][j] != 0){
-                        dp[i][j] = dp[i-1][j] + 1;
-                    }else if (dp[i][j-1] != 0 && dp[i-1][j-1] != 0 && dp[i-1][j] == 0){
-                        dp[i][j] = Math.min(dp[i][j-1], dp[i-1][j-1]) + 1;
-                    }else if (dp[i][j-1] != 0 && dp[i-1][j-1] == 0 && dp[i-1][j] != 0){
-                        dp[i][j] = Math.min(dp[i][j-1], dp[i-1][j]) + 1;
-                    }else if (dp[i][j-1] == 0 && dp[i-1][j-1] != 0 && dp[i-1][j] != 0){
-                        dp[i][j] = Math.min(dp[i-1][j-1], dp[i-1][j]) + 1;
+                    if (j == grid[0].length-1) {
+                        Queue<Integer> queue = new PriorityQueue<>();
+                        queue.offer(dp[i][j-1]);
+                        queue.offer(dp[i-1][j-1]);
+                        queue.offer(dp[i-1][j]);
+                        while (!queue.isEmpty()){
+                            if (queue.peek() != 0){
+                                dp[i][j] = queue.poll() + 1;
+                                break;
+                            }else {
+                                queue.poll();
+                            }
+                        }
                     }else {
-                        dp[i][j] = Math.min(dp[i-1][j-1], Math.min(dp[i][j-1], dp[i-1][j])) + 1;
+                        Queue<Integer> queue = new PriorityQueue<>();
+                        queue.offer(dp[i][j-1]);
+                        queue.offer(dp[i-1][j-1]);
+                        queue.offer(dp[i-1][j]);
+                        queue.offer(dp[i-1][j+1]);
+                        while (!queue.isEmpty()){
+                            if (queue.peek() != 0){
+                                dp[i][j] = queue.poll() + 1;
+                                break;
+                            }else {
+                                queue.poll();
+                            }
+                        }
                     }
                 }
             }
