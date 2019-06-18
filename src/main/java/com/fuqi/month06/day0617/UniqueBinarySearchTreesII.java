@@ -29,6 +29,11 @@ import java.util.List;
  * @Version V1.0
  */
 public class UniqueBinarySearchTreesII {
+    public static void main(String[] args) {
+        UniqueBinarySearchTreesII treesII = new UniqueBinarySearchTreesII();
+        List<TreeNode> res = treesII.generateTrees2(3);
+        System.out.println("res = " + res);
+    }
 
     /**
      * 解法一
