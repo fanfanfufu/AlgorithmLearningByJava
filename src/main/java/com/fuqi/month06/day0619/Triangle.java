@@ -57,7 +57,9 @@ public class Triangle {
     }
 
     public static void main(String[] args) {
-        List<Integer> raw1 = new ArrayList<>();
-        raw1.add(2);
+        boolean[] dp = new boolean[5];
+        for (boolean each: dp) {
+            System.out.print(each + " ");
+        }
     }
 }
