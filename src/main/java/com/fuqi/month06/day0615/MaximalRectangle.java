@@ -3,14 +3,26 @@ package com.fuqi.month06.day0615;
 import java.util.Arrays;
 
 /**
- * @Description:
+ * @Description: 给定一个包含0和1的二维二进制矩阵，找出只包含1的最大矩形并返回其面积。
+ *
+ * Input:
+ * [
+ *   ["1","0","1","0","0"],
+ *   ["1","0","1","1","1"],
+ *   ["1","1","1","1","1"],
+ *   ["1","0","0","1","0"]
+ * ]
+ * Output: 6
+ *
  * @Author: 傅琦
  * @DateTime: 2019/6/15 12:34
  * @Version: V1.0
  */
 public class MaximalRectangle {
     public int maximalRectangle(char[][] matrix) {
-        if (matrix.length == 0) { return 0; }
+        if (matrix.length == 0) {
+            return 0;
+        }
         int maxarea = 0;
         int[][] dp = new int[matrix.length][matrix[0].length];
 
@@ -19,11 +31,13 @@ public class MaximalRectangle {
                 if (matrix[i][j] == '1'){
 
                     // compute the maximum width and update dp with it
-                    dp[i][j] = j == 0? 1 : dp[i][j-1] + 1;
+                    // 计算最大宽度
+                    dp[i][j] = j == 0 ? 1 : dp[i][j-1] + 1;
 
                     int width = dp[i][j];
 
                     // compute the maximum area rectangle with a lower right corner at [i, j]
+                    // 计算最大的矩形区域
                     for(int k = i; k >= 0; k--){
                         width = Math.min(width, dp[k][j]);
                         maxarea = Math.max(maxarea, width * (i - k + 1));
@@ -35,7 +49,9 @@ public class MaximalRectangle {
     }
 
     public int maximalRectangle2(char[][] matrix) {
-        if (matrix.length == 0) return 0;
+        if (matrix.length == 0) {
+            return 0;
+        }
         int m = matrix.length;
         int n = matrix[0].length;
 
@@ -52,12 +68,18 @@ public class MaximalRectangle {
             int cur_left = 0, cur_right = n;
             // update height
             for (int j = 0; j < n; j++) {
-                if (matrix[i][j] == '1') height[j]++;
-                else height[j] = 0;
+                if (matrix[i][j] == '1') {
+                    height[j]++;
+                }
+                else {
+                    height[j] = 0;
+                }
             }
             // update left
             for (int j = 0; j < n; j++) {
-                if (matrix[i][j] == '1') left[j] = Math.max(left[j], cur_left);
+                if (matrix[i][j] == '1') {
+                    left[j] = Math.max(left[j], cur_left);
+                }
                 else {
                     left[j] = 0;
                     cur_left = j + 1;
@@ -65,7 +87,9 @@ public class MaximalRectangle {
             }
             // update right
             for (int j = n - 1; j >= 0; j--) {
-                if (matrix[i][j] == '1') right[j] = Math.min(right[j], cur_right);
+                if (matrix[i][j] == '1') {
+                    right[j] = Math.min(right[j], cur_right);
+                }
                 else {
                     right[j] = n;
                     cur_right = j;
