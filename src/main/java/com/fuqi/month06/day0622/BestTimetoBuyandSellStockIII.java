@@ -110,6 +110,7 @@ public class BestTimetoBuyandSellStockIII {
         if (prices == null || prices.length == 0) {
             return 0;
         }
+        // 首先只进行一次交易的最大利润的循环遍历
         int max = 0;
         int[] dp = new int[prices.length];
         int lowest = prices[0];
@@ -123,7 +124,7 @@ public class BestTimetoBuyandSellStockIII {
                 lowest = prices[i];
             }
         }
-        // if there are two transaction process
+        // 记录第二次交易的利润
         int newMax = max;
         int secondMax = 0;
         int highest = prices[prices.length - 1];
@@ -132,7 +133,7 @@ public class BestTimetoBuyandSellStockIII {
             if (highest - prices[i] > secondMax) {
                 secondMax = highest - prices[i];
                 if (secondMax + dp[i-1] > newMax) {
-                    newMax = Math.max(newMax, secondMax + dp[i-1]);
+                    newMax = secondMax + dp[i-1];
                 }
             }
             if (prices[i] > highest) {
@@ -143,7 +144,7 @@ public class BestTimetoBuyandSellStockIII {
     }
 
     public static void main(String[] args) {
-        int[] input = new int[]{1,2,3,4,5};
+        int[] input = new int[]{3,3,5,0,0,3,1,4};
         int res = maxProfit3(input);
         System.out.println("res = " + res);
     }
