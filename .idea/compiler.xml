@@ -8,8 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="algorithmexercises" />
         <module name="datastructurelearn" />
-        <module name="leetcodeexercises" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="8" />
   </component>
 </project>
