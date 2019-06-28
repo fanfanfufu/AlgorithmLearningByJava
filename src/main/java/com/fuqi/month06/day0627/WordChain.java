@@ -15,15 +15,13 @@ public class WordChain {
         // Since all words are of same length.
         int L = beginWord.length();
 
-        // Dictionary to hold combination of words that can be formed,
-        // from any given word. By changing one letter at a time.
+        // 创建一个用于记录，只修改一个字符后的单词作为key，对应的有多少个完整的单词为value
         HashMap<String, ArrayList<String>> allComboDict = new HashMap<String, ArrayList<String>>();
 
         wordList.forEach(
                 word -> {
                     for (int i = 0; i < L; i++) {
-                        // Key is the generic word
-                        // Value is a list of words which have the same intermediate generic word.
+                        // 存储元素示例：h*t->[hit, hot]
                         String newWord = word.substring(0, i) + '*' + word.substring(i + 1, L);
                         ArrayList<String> transformations =
                                 allComboDict.getOrDefault(newWord, new ArrayList<String>());
@@ -32,11 +30,11 @@ public class WordChain {
                     }
                 });
 
-        // Queue for BFS
+        // 创建一个用于BFS的队列
         Queue<Pair<String, Integer>> Q = new LinkedList<Pair<String, Integer>>();
         Q.add(new Pair(beginWord, 1));
 
-        // Visited to make sure we don't repeat processing same word.
+        // 访问过的元素做上标记，避免重复访问
         HashMap<String, Boolean> visited = new HashMap<String, Boolean>();
         visited.put(beginWord, true);
 
@@ -66,21 +64,6 @@ public class WordChain {
         }
 
         return 0;
-    }
-
-    public boolean judgeWord(String word1, String word2){
-        int i = 0, j = 0;
-        int diff = 0;
-
-        while (i < word1.length()){
-            if (word1.charAt(i) != word2.charAt(j)){
-                diff++;
-            }
-            i++;
-            j++;
-        }
-
-        return diff < 2;
     }
 
     private int L;
@@ -182,9 +165,9 @@ public class WordChain {
 
     public static void main(String[] args) {
         WordChain chain = new WordChain();
-        String start = "hot";
-        String end = "dog";
-        String[] list0 = {"hot","dog"};
+        String start = "hit";
+        String end = "cog";
+        String[] list0 = {"hot","dot","dog","lot","log","cog"};
         List<String> list = new ArrayList<>(list0.length);
         for (String s: list0) {
             list.add(s);
