@@ -1,5 +1,7 @@
 package com.fuqi.maplearn;
 
+import java.util.HashMap;
+
 /**
  * @Description
  * @Author 傅琦
@@ -7,4 +9,10 @@ package com.fuqi.maplearn;
  * @Version V1.0
  */
 public class HashMapTest1 {
+    public static void main(String[] args) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("张三", 20);
+        map.put("李四", 20);
+        System.out.println("map = " + map);
+    }
 }
