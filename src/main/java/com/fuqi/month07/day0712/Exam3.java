@@ -1,6 +1,5 @@
 package com.fuqi.month07.day0712;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 /**
@@ -17,6 +16,21 @@ public class Exam3 {
         scanner.close();
         long startTime = System.currentTimeMillis();
         long x = 1;
+        boolean flag = true;
+        while (x < Long.MAX_VALUE){
+            double sumxn = x * x + n;
+            double y_N = Math.sqrt(sumxn);
+            long y = (long) y_N;
+            if (y == y_N){
+                System.out.println(x);
+                flag = false;
+                break;
+            }
+            x++;
+        }
+        if (flag){
+            System.out.println(-1);
+        }
 
         long endTime = System.currentTimeMillis();
 
