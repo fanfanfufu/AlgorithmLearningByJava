@@ -1,5 +1,8 @@
 package com.fuqi.month07.day0713;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Description: 将数组分成几个递增序列
  *
@@ -21,6 +24,14 @@ package com.fuqi.month07.day0713;
  */
 public class Exam4 {
     public boolean canDivideIntoSubsequences(int[] nums, int K) {
+        Map<Integer, Integer> count = new HashMap<>();
+        int mx = 0;
+        for (int i = 0; i < nums.length; i++) {
+            count.put(nums[i], count.getOrDefault(nums[i], 0) + 1);
+            mx = Math.max(mx, count.get(nums[i]));
+        }
+
+        if (mx * K > nums.length){ return false; }
         return true;
     }
 }
