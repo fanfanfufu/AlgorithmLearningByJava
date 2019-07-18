@@ -10,7 +10,7 @@ import org.w3c.dom.ls.LSException;
  */
 public class RemoveListNodeTest {
 
-    static class ListNode{
+    private static class ListNode{
         int val;
         ListNode next;
 
