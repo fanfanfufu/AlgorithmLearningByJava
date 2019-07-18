@@ -18,13 +18,17 @@ public class PalindromeLinkedListTest {
     public boolean isPalindrome(ListNode head) {
         if (head == null || head.next == null){ return true; }
 
-        // 1. 反转链表
-        ListNode prev = null, cur = head, cur1 = head;
+        // 1. 复制+反转链表
+        ListNode prev = null, cur = head;
+        ListNode copy = new ListNode(head.val);
+        ListNode cur2 = copy;
         while (cur != null){
             ListNode temp = cur.next;
             // 1. 复制操作
-            cur1.next = temp;
-            cur1 = cur1.next;
+            if (temp != null){
+                cur2.next = new ListNode(temp.val);
+                cur2 = cur2.next;
+            }
             // 2. 反转操作
             cur.next = prev;
             prev = cur;
@@ -32,13 +36,13 @@ public class PalindromeLinkedListTest {
         }
 
         // 2. 遍历两个链表，对比
-        ListNode cur2 = prev;
-        while (cur1 != null){
-            if (cur1.val != cur2.val){
+        ListNode reverse = prev;
+        while (copy != null){
+            if (copy.val != reverse.val){
                 return false;
             }
-            cur1 = cur1.next;
-            cur2 = cur2.next;
+            copy = copy.next;
+            reverse = reverse.next;
         }
 
         return true;
