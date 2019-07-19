@@ -43,7 +43,7 @@ public class CycleLinkedList {
      * 方法二：floyd法
      * 时间复杂度O(n)；空间复杂度O(1)
      * @param head
-     * @return
+     * @return ListNode
      */
     public ListNode detectCycle2(ListNode head){
         if (head == null || head.next == null){ return null; }
