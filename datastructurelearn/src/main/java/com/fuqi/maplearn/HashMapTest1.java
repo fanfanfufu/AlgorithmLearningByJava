@@ -1,6 +1,7 @@
 package com.fuqi.maplearn;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Description
@@ -13,6 +14,10 @@ public class HashMapTest1 {
         HashMap<String, Integer> map = new HashMap<>();
         map.put("张三", 20);
         map.put("李四", 20);
+        map.put("李四", 25);
         System.out.println("map = " + map);
+
+        Map<String, Integer> map2 = new HashMap<>(map);
+        System.out.println("map2 = " + map2);
     }
 }
