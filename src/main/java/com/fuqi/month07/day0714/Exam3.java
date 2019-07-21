@@ -1,7 +1,7 @@
 package com.fuqi.month07.day0714;
 
 /**
- * @Description:
+ * @Description: 表现良好的最长时间段
  * @Author: 傅琦
  * @DateTime: 2019/7/14 10:30
  * @Version: V1.0
