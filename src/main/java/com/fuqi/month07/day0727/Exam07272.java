@@ -7,4 +7,7 @@ package com.fuqi.month07.day0727;
  * @Version V1.0
  */
 public class Exam07272 {
+    public boolean isArmstrong(int N) {
+        return false;
+    }
 }
