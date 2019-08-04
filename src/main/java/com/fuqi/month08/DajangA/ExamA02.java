@@ -33,7 +33,7 @@ public class ExamA02 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNextInt()){
+        while (scanner.hasNext()){
             int n = scanner.nextInt();
             int money = scanner.nextInt();
 
