@@ -3,7 +3,7 @@ package com.fuqi.month08.DajangA;
 import java.util.Scanner;
 
 /**
- * @Description:
+ * @Description: 多重背包问题
  * @Author 傅琦
  * @date 2019/8/4 20:19
  * @Version V1.0
@@ -33,21 +33,22 @@ public class ExamA02 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // 第一行输入
-        int n = scanner.nextInt();
-        int money = scanner.nextInt();
+        while (scanner.hasNextInt()){
+            int n = scanner.nextInt();
+            int money = scanner.nextInt();
 
-        int[] prices = new int[n];
-        int[] values = new int[n];
-        int[] quantities = new int[n];
+            int[] prices = new int[n];
+            int[] values = new int[n];
+            int[] quantities = new int[n];
 
-        for (int i = 0; i < n; i++) {
-            prices[i] = scanner.nextInt();
-            values[i] = scanner.nextInt();
-            quantities[i] = scanner.nextInt();
+            for (int i = 0; i < n; i++) {
+                prices[i] = scanner.nextInt();
+                values[i] = scanner.nextInt();
+                quantities[i] = scanner.nextInt();
+            }
+
+            int res = helper(money, prices, values, quantities);
+            System.out.println("res = " + res);
         }
-
-        int res = helper(money, prices, values, quantities);
-        System.out.println("res = " + res);
     }
 }
