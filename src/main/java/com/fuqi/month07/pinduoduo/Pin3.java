@@ -10,39 +10,40 @@ import java.util.*;
  */
 public class Pin3 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int tasckNumber = sc.nextInt();
-        int lines = sc.nextInt();
+//        Scanner sc = new Scanner(System.in);
+//        int tasckNumber = sc.nextInt();
+//        int lines = sc.nextInt();
 //        System.out.println("tasckNumber = " + tasckNumber);
 //        System.out.println("lines = " + lines);
-        int[] tascks = new int[tasckNumber];
-        for (int i = 0; i < tasckNumber; i++) {
-            int x = sc.nextInt();
-            tascks[i] = x;
-        }
-
+//        int[] tascks = new int[tasckNumber];
+//        for (int i = 0; i < tasckNumber; i++) {
+//            int x = sc.nextInt();
+//            tascks[i] = x;
+//        }
+//
 //        for (int num: tascks) {
 //            System.out.print(num + " ");
 //        }
 //        System.out.println();
-
-        int[][] dependency = new int[lines][2];
-        for (int i = 0; i < lines; i++) {
-            for (int j = 0; j < 2; j++) {
-                int x = sc.nextInt();
-                dependency[i][j] = x;
-            }
-        }
-
+//
+//        int[][] dependency = new int[lines][2];
+//        for (int i = 0; i < lines; i++) {
+//            for (int j = 0; j < 2; j++) {
+//                int x = sc.nextInt();
+//                dependency[i][j] = x;
+//            }
+//        }
+//
 //        for (int i = 0; i < dependency.length; i++) {
 //            for (int num : dependency[i]) {
 //                System.out.print(num + " ");
 //            }
 //            System.out.println();
 //        }
+        helper();
     }
 
-    public static void helper(String[] args){
+    public static void helper(){
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt(), eNum = sc.nextInt();
         int[] time = new int[num + 1];
@@ -62,27 +63,31 @@ public class Pin3 {
         }
         PriorityQueue<Integer> pq = new PriorityQueue<>((i1, i2) -> (time[i1] - time[i2]) );
         for(int i = 1; i <= num; i++){
-            if(out.get(i).isEmpty())
+            if(out.get(i).isEmpty()) {
                 pq.add(i);
+            }
         }
         while(!pq.isEmpty()){
             int size = pq.size();
             List<Integer> list = new LinkedList<>();
             for(int i = 0; i < size; i++){
                 int node = pq.poll();
-                if(set.contains(node))
+                if(set.contains(node)) {
                     continue;
+                }
                 set.add(node);
                 res.add(node);
                 for(int next : in.get(node)){
                     out.get(next).remove(node);
-                    if(out.get(next).isEmpty())
+                    if(out.get(next).isEmpty()) {
                         list.add(next);
+                    }
                 }
             }
             pq.addAll(list);
         }
-        for(int i : res)
+        for(int i : res) {
             System.out.print(i + " ");
+        }
     }
 }

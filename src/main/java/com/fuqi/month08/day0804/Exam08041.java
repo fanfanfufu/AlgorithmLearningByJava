@@ -31,20 +31,36 @@ public class Exam08041 {
     }
 
     public int movesToMakeZigzag(int[] nums) {
-        int ans = 0;
-        int[] record = new int[nums.length];
-        for (int i = 1; i < nums.length-1; i++) {
-            boolean b1 = nums[i-1] < nums[i] && nums[i] > nums[i+1];
-            boolean b2 = nums[i-1] > nums[i] && nums[i] < nums[i+1];
-            if (b1 || b2){
-                continue;
+        int evenRes = 0;
+        int oddRes = 0;
+        int left;
+        int right;
+        for (int i = 0; i < nums.length; i++) {
+            if (i == 0){
+                left = Integer.MAX_VALUE;
+            }else {
+                left = nums[i-1];
             }
-            if (nums[i-1] < nums[i] && nums[i] < nums[i+1]){
-                int diff1 = nums[i] - nums[i-1];
-                int diff2 = nums[i+1] - nums[i];
+
+            if (i == nums.length-1){
+                right = Integer.MAX_VALUE;
+            }else {
+                right = nums[i+1];
+            }
+
+            int minNum = Math.min(left, right);
+
+            if (i % 2 == 0){
+                if (nums[i] >= minNum){
+                    evenRes += nums[i] - minNum + 1;
+                }
+            }else {
+                if (nums[i] >= minNum){
+                    oddRes += nums[i] - minNum + 1;
+                }
             }
         }
 
-        return ans;
+        return Math.min(oddRes, evenRes);
     }
 }

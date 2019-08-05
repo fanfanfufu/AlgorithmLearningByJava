@@ -1,9 +1,7 @@
 package com.fuqi.month08.day0804;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * @Description:
@@ -12,31 +10,25 @@ import java.util.Map;
  * @Version: V1.0
  */
 public class SnapshotArray {
-    int[] element;
-    int snapCount = 0;
-    List<int[]> record;
+    private int count;
+    private List<TreeMap<Integer, Integer>> shot = new ArrayList<>();
 
     public SnapshotArray(int length) {
-        element = new int[length];
+        IntStream.range(0, length).forEach(i -> {
+            shot.add(new TreeMap<>());
+        });
     }
 
     public void set(int index, int val) {
-        element[index] = val;
+        shot.get(index).put(count, val);
     }
 
     public int snap() {
-        int res = snapCount;
-        snapCount++;
-        if (record == null){
-            record = new ArrayList<>();
-        }
-        int[] temp = new int[element.length];
-        System.arraycopy(element, 0, temp, 0, element.length);
-        record.add(temp);
-        return res;
+        return count++;
     }
 
     public int get(int index, int snap_id) {
-        return record.get(snap_id)[index];
+        Integer key = shot.get(index).floorKey(snap_id);
+        return key == null ? 0 : shot.get(index).get(key);
     }
 }
