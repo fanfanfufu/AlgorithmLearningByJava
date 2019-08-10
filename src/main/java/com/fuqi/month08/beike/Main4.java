@@ -9,75 +9,30 @@ import java.util.Scanner;
  * @Version V1.0
  */
 public class Main4 {
+
+    /**
+     * 因为数据范围较小，可以考虑直接暴力来做；
+     * 枚举每个点作为最高点，然后计算出其花费。 维护一个最小值即可
+     * @param arr
+     * @return long
+     */
     private static long helper(int[] arr){
-
-        long ans = 0;
-        int[] dp = new int[arr.length];
-
-        // 先求递增的最小代价
-        int pre = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            dp[i] = dp[i-1] + Math.max(0, pre - arr[i] + 1);
-            pre = Math.max(pre + 1, arr[i]);
-        }
-
-        // 再求全部递减的最小代价
-        pre = arr[arr.length - 1];
-        ans = dp[arr.length - 1];
-        int cur = 0;
-        for (int i = arr.length - 2; i >= 0; i--) {
-            // 重复加的部分
-            int repeat = Math.min(dp[i] - (i == 0 ? 0 : dp[i-1]), Math.max(0, pre - arr[i] + 1));
-
-            cur += Math.max(0, pre - arr[i] + 1);
-            pre = Math.max(pre + 1, arr[i]);
-
-            ans = Math.min(dp[i] + cur -repeat, ans);
-        }
-
-        return ans;
-    }
-
-    private static long helper2(int[] arr){
         long ans = Long.MAX_VALUE;
 
-        int decrese = 0;
-        int right = arr[arr.length-1];
-        for (int i = arr.length - 2; i >= 0; i--) {
-            decrese += Math.max(0, right - arr[i] + 1);
-            right = Math.max(right+1, arr[i]);
-        }
-
-        ans = Math.min(ans, decrese);
-
-        int increse = 0;
-        int left = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            increse += Math.max(0, left - arr[i] + 1);
-            left = Math.max(left+1, arr[i]);
-        }
-
-        ans = Math.min(ans, increse);
-
-        for (int i = 1; i < arr.length; i++) {
-            left = arr[0];
-            right = arr[arr.length-1];
-            increse = 0;
-            decrese = 0;
+        for (int i = 0; i <= arr.length; i++) {
+            int increse = 0, decrese = 0, left = arr[0], right = arr[arr.length-1];
+            for (int j = arr.length - 2; j >= i; j--) {
+                decrese += Math.max(0, right - arr[j] +1);
+                right = Math.max(right+1, arr[j]);
+            }
 
             for (int j = 1; j < i; j++) {
                 increse += Math.max(0, left - arr[j] + 1);
                 left = Math.max(left+1, arr[j]);
             }
 
-            for (int j = arr.length-2; j > i; j--) {
-                decrese += Math.max(0, right - arr[j] + 1);
-                right = Math.max(right+1, arr[j]);
-            }
-
-            ans = Math.min(ans, (left + right));
+            ans = Math.min(ans, increse+decrese);
         }
-
         return ans;
     }
 
@@ -118,5 +73,6 @@ public class Main4 {
         }
 
         System.out.println(helper(queue));
+        scanner.close();
     }
 }
