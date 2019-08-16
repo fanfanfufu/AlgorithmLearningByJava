@@ -63,6 +63,8 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-
+        int[] input = {11,13,15,17,19,21};
+        int res = recursionBinarySearch(input, 19,  0, input.length-1);
+        System.out.println("res = " + res);
     }
 }
