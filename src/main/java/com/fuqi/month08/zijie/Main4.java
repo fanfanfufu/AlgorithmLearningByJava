@@ -3,7 +3,7 @@ package com.fuqi.month08.zijie;
 import java.util.Scanner;
 
 /**
- * @Description
+ * @Description: 4*4的格子里实现
  * @Author 傅琦
  * @date 2019/8/25 19:50
  * @Version V1.0
@@ -26,9 +26,11 @@ public class Main4 {
     }
 
     private static void helper(int direct, int[][] graph){
+        int i;
         switch (direct) {
             case 1:
-                int i = 0;
+                // 先求和
+                i = 0;
                 while (i < 4){
                     int j = 0;
                     while (j < 3){
@@ -41,6 +43,7 @@ public class Main4 {
                     i++;
                 }
 
+                // 再移动
                 i = 0;
                 while (i < 4){
                     int j = 0;
@@ -62,8 +65,8 @@ public class Main4 {
                 }
                 break;
             case 2:
-                i = 3;
-                while (i > 0){
+                i = 0;
+                while (i < 4){
                     int j = 3;
                     while (j > 0){
                         if (graph[j][i] != 0 && graph[j][i] == graph[j-1][i]) {
@@ -72,11 +75,11 @@ public class Main4 {
                         }
                         j--;
                     }
-                    i--;
+                    i++;
                 }
 
-                i = 3;
-                while (i >= 0){
+                i = 0;
+                while (i < 4){
                     int j = 3;
                     while (j >= 0){
                         if (graph[j][i] == 0){
@@ -92,7 +95,7 @@ public class Main4 {
                         }
                         j--;
                     }
-                    i--;
+                    i++;
                 }
                 break;
             case 3:
@@ -113,12 +116,12 @@ public class Main4 {
                 while (i < 4){
                     int j = 0;
                     while (j < 4){
-                        if (graph[j][i] == 0){
+                        if (graph[i][j] == 0){
                             int k = j+1;
                             while (k < 4){
-                                if (graph[k][i] != 0){
-                                    graph[j][i] = graph[k][i];
-                                    graph[k][i] = 0;
+                                if (graph[i][k] != 0){
+                                    graph[i][j] = graph[i][k];
+                                    graph[i][k] = 0;
                                     break;
                                 }
                                 k++;
@@ -130,6 +133,38 @@ public class Main4 {
                 }
                 break;
             case 4:
+                i = 0;
+                while (i < 4){
+                    int j = 3;
+                    while (j > 0){
+                        if (graph[i][j] != 0 && graph[i][j] == graph[i][j-1]) {
+                            graph[i][j] *= 2;
+                            graph[i][j-1] = 0;
+                        }
+                        j--;
+                    }
+                    i++;
+                }
+
+                i = 0;
+                while (i < 4){
+                    int j = 3;
+                    while (j >= 0){
+                        if (graph[i][j] == 0){
+                            int k = j-1;
+                            while (k >= 0){
+                                if (graph[i][k] != 0){
+                                    graph[i][j] = graph[i][k];
+                                    graph[i][k] = 0;
+                                    break;
+                                }
+                                k--;
+                            }
+                        }
+                        j--;
+                    }
+                    i++;
+                }
                 break;
         }
 
