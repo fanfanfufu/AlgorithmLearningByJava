@@ -1,6 +1,8 @@
 package com.fuqi.treelearn;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -34,5 +36,27 @@ public class PreOrderIterator {
         }
 
         return res;
+    }
+
+    /**
+     * 非递归前序遍历
+     */
+    public List<Integer> preOrder2(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        if (root == null) { return ans; }
+
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode cur = root;
+
+        while (cur != null || !stack.isEmpty()){
+            while (cur != null) {
+                stack.push(cur);
+                ans.add(cur.val);
+                cur = cur.left;
+            }
+            cur = stack.pop().right;
+        }
+
+        return ans;
     }
 }
