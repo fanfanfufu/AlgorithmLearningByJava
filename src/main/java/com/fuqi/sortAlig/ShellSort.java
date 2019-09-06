@@ -3,7 +3,7 @@ package com.fuqi.sortAlig;
 import java.util.Arrays;
 
 /**
- * @Description: 希尔排序
+ * @Description: 希尔排序的代码
  * @Author 傅琦
  * @date 2019/9/6 20:42
  * @Version V1.0
