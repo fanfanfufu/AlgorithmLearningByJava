@@ -55,9 +55,11 @@ public class KMP {
         int i = 0, j = 0;
 
         while (i < s_arr.length && j < p_arr.length) {
-            if (j == -1 || s_arr[i] == p_arr[j]) {
+            if (s_arr[i] == p_arr[j]) {
                 i++;
                 j++;
+            } else if (next[j] == -1) {
+                i++;
             } else {
                 j = next[j];
             }
@@ -71,6 +73,7 @@ public class KMP {
     }
 
     public static void main(String[] args) {
+        // 返回的结果应该是6
         System.out.println(kmpMatch("abcabaabaabcacb", "abaabcac"));
     }
 }
