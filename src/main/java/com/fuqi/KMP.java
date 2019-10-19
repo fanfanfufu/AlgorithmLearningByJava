@@ -26,17 +26,17 @@ public class KMP {
         int count = 0;
         // 找当前位置左边字串的最长公共前后缀，并将其长度赋值给next数组当前位置
         while (positon < chars.length) {
-            if (chars[positon-1] == chars[0]) {
-//                count++;
-//                next[positon] = count;
-//                positon++;
-                next[positon++] = ++count;
+            if (chars[positon-1] == chars[count]) {
+                count++;
+                next[positon] = count;
+                positon++;
+//                next[positon++] = ++count;
             } else if (count > 0) {
                 count = next[count];
             } else {
-//                next[positon] = 0;
-//                positon++;
-                next[positon++] = 0;
+                next[positon] = 0;
+                positon++;
+//                next[positon++] = 0;
             }
         }
         return next;
