@@ -74,7 +74,7 @@ public class LeetCode25 {
         LeetCode25 leetCode25 = new LeetCode25();
         ListNode res = leetCode25.reverseKGroup(head, 3);
         while (res != null){
-            System.out.println(res.val);
+            System.out.print(res.val + ", ");
             res = res.next;
         }
     }
