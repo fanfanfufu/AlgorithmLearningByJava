@@ -2,8 +2,6 @@ package com.fuqi.year2020.month05.day22;
 
 import com.fuqi.year2020.TreeNode;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
