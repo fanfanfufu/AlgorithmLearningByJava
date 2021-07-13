@@ -22,19 +22,32 @@ public class SingleLinkedListReverse {
     }
 
     public ListNode reverse(ListNode head){
-        if (head == null){ return null; }
+//        if (head == null){ return null; }
+//        ListNode prev = null;
+//        ListNode cur = head;
+//        while (cur != null){
+//            // 1. 取出当前节点在原链表中的下一个节点
+//            ListNode temp = cur.next;
+//            // 2. 将当前节点的下一个节点设置为其在原链表中的前一个节点
+//            cur.next = prev;
+//            // 3. 将当前节点赋值给其前一个节点的指针
+//            prev = cur;
+//            // 4. 将当前节点的下一个节点赋值
+//            cur = temp;
+//        }
+//        return prev;
+        if (head == null) { return head;}
         ListNode prev = null;
         ListNode cur = head;
-        while (cur != null){
-            // 1. 取出当前节点在原链表中的下一个节点
-            ListNode temp = cur.next;
-            // 2. 将当前节点的下一个节点设置为其在原链表中的前一个节点
+
+        while(head != null) {
+            // 一定要先执行head指针的移动
+            head = head.next;
             cur.next = prev;
-            // 3. 将当前节点赋值给其前一个节点的指针
             prev = cur;
-            // 4. 将当前节点的下一个节点赋值
-            cur = temp;
+            cur = head;
         }
+
         return prev;
     }
 }
