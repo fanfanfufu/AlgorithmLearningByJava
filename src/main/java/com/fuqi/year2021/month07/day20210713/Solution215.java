@@ -1,17 +1,57 @@
-package com.fuqi.sortAlig;
+package com.fuqi.year2021.month07.day20210713;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
- * @Description: 快速排序
- * @Author 傅琦
- * @Date 2019/6/5 22:27
- * @Version V1.0
+ * @author FuQi
+ * @desc 数组中的第K个最大元素
+ * @Solution:
+ *    本质在于考察排序算法
  */
-public class QuickOrder {
+public class Solution215 {
+    public int findKthLargest(int[] nums, int k) {
+//         int[] nums_order = order(nums);
+//         int[] nums_order = order1(nums, 0, nums.length-1);
+//         int[] nums_order = order2(nums, 0, nums.length-1);
+//         return nums_order[nums.length - k];
+        // 使用顶堆
+        Queue<Integer> pq = new PriorityQueue<>();
+        for (int num : nums) {
+            if(pq.size() < k){
+                pq.add(num);
+            }
+            else if(pq.peek() < num){
+                pq.remove();
+                pq.add(num);
+            }
+        }
+        return pq.peek();
+    }
+
     /**
-     * 方式一：递归实现
+     * 冒泡排序
+     *
+     * @param arr
+     * @return
+     */
+    private int[] order(int[] arr){
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 1; j < arr.length - i; j++) {
+                if (arr[j-1] > arr[j]){
+                    int temp = arr[j-1];
+                    arr[j-1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+
+    /**
+     * 方式一：快排-递归实现
      * @param data
      * @param left
      * @param right
@@ -53,7 +93,7 @@ public class QuickOrder {
     }
 
     /**
-     * 方式二：非递归实现
+     * 方式二：快排-非递归实现
      * @param data
      * @param left
      * @param right
@@ -96,14 +136,6 @@ public class QuickOrder {
                 stack.push(i+1);
                 stack.push(right);
             }
-        }
-    }
-
-    public static void main(String[] args){
-        int[] arr = {10,7,2,4,7,62,3,4,2,1,8,9,19};
-        order1(arr, 0, arr.length-1);
-        for (int num: arr) {
-            System.out.print(num + " ");
         }
     }
 }
