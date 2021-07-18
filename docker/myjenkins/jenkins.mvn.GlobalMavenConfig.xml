@@ -1,0 +1,9 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<jenkins.mvn.GlobalMavenConfig>
+    <settingsProvider class="jenkins.mvn.FilePathSettingsProvider">
+        <path>/opt/maven/apache-maven-3.8.1/conf/settings.xml</path>
+    </settingsProvider>
+    <globalSettingsProvider class="jenkins.mvn.FilePathGlobalSettingsProvider">
+        <path>/opt/maven/apache-maven-3.8.1/conf/settings.xml</path>
+    </globalSettingsProvider>
+</jenkins.mvn.GlobalMavenConfig>
