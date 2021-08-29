@@ -136,7 +136,7 @@ public class Solution00567 {
      * @param s2
      * @return
      */
-    public boolean checkInclusion4(String s1, String s2) {
+    public static boolean checkInclusion4(String s1, String s2) {
         int n = s1.length(), m = s2.length();
         if (n > m) {
             return false;
@@ -179,12 +179,12 @@ public class Solution00567 {
         // true
         System.out.println(checkInclusion1("oo", "eidbcooo"));
         // true
-        System.out.println(checkInclusion1("adc", "dcda"));
+        System.out.println(checkInclusion4("adc", "dcda"));
         // false
         System.out.println(checkInclusion1("oo", "ob"));
         // true
         System.out.println(checkInclusion1("ab", "ba"));
         // false
-        System.out.println(checkInclusion1("hello", "ooolleoooleh"));
+        System.out.println(checkInclusion4("hello", "ooolleoooleh"));
     }
 }
