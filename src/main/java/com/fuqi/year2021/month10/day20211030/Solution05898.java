@@ -1,12 +1,9 @@
-package com.fuqi.year2021.month202110.day20211030;
+package com.fuqi.year2021.month10.day20211030;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author FuQi
