@@ -24,8 +24,8 @@ public class Robot {
 
     public void move(int num) {
         num = num % (2 * (this.width-1+this.height-1));
-        if (num < 1) {
-            return;
+        if (num == 0) {
+            changeDir();
         }
         // while循环
         while (num > 0) {
@@ -39,6 +39,18 @@ public class Robot {
             }
             // 如果移动距离大于当前方向可移动距离上限
             num = doMoveMaxDirDistance(num, dirDistance);
+        }
+    }
+
+    private void changeDir() {
+        if (this.curX == 0 && this.curY == 0) {
+            this.dir = "South";
+        } else if (this.curX == this.width-1 && this.curY == 0) {
+            this.dir = "East";
+        } else if (this.curX == this.width-1 && this.curY == this.height-1) {
+            this.dir = "North";
+        } else if (this.curX == 0 && this.curY == this.height-1){
+            this.dir = "West";
         }
     }
 
@@ -102,19 +114,38 @@ public class Robot {
     }
 
     public static void main(String[] args) {
-        Robot robot = new Robot(6,3);
-        robot.move(2);
-        robot.move(2);
-        robot.move(2);
+        Robot robot = new Robot(4,5);
+        robot.move(44);
+        robot.move(19);
+        robot.move(8);
+        robot.move(36);
         String dir = robot.getDir();
         System.out.println("dir = " + dir);
         int[] pos = robot.getPos();
         System.out.println(pos[0] + "," + pos[1] );
-        robot.move(1);
-        robot.move(4);
+        robot.move(17);
+        robot.move(49);
+        robot.move(14);
+        robot.move(40);
         dir = robot.getDir();
         System.out.println("dir = " + dir);
         pos = robot.getPos();
         System.out.println(pos[0] + "," + pos[1] );
+        robot.move(18);
+        robot.move(7);
+        dir = robot.getDir();
+        System.out.println("dir = " + dir);
+        pos = robot.getPos();
+        System.out.println(pos[0] + "," + pos[1] );
+        robot.move(8);
+        robot.move(5);
+        robot.move(2);
+        robot.move(36);
+        robot.move(32);
+        dir = robot.getDir();
+        System.out.println("dir = " + dir);
+        pos = robot.getPos();
+        System.out.println(pos[0] + "," + pos[1] );
+        System.out.println();
     }
 }
