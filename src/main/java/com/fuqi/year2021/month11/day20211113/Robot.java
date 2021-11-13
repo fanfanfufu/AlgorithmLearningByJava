@@ -23,6 +23,7 @@ public class Robot {
     }
 
     public void move(int num) {
+        num = num % (2 * (this.width-1+this.height-1));
         if (num < 1) {
             return;
         }
