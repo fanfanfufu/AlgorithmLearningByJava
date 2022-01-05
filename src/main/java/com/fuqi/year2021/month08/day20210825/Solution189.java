@@ -59,6 +59,8 @@ public class Solution189 {
 
     /**
      * 环状替换：空间o(1)，时间O(n)
+     * 主要是整理出规律：挪动后的数字的新的下标就变成了 (i+k) % len
+     * 只需要与新下标处的数进行值交换即可，并且下一次操作从被替换处坐标开始计算
      * @param nums
      * @param k
      */
@@ -89,6 +91,7 @@ public class Solution189 {
      * @param k
      */
     public void rotate4(int[] nums, int k) {
+        k = k % nums.length;
         // 1. 翻转整个数组
         reverse(nums, 0, nums.length-1);
         // 2. 翻转前k个
