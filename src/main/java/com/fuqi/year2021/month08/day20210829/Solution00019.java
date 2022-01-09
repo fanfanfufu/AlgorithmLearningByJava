@@ -7,6 +7,13 @@ import com.fuqi.year2020.ListNode;
  * @author FuQi
  */
 public class Solution00019 {
+    /**
+     * 采用快慢指针，即可实现遍历一次就能删除目标节点
+     *
+     * @param head
+     * @param n
+     * @return
+     */
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode pre = new ListNode(-1);
         pre.next = head;
@@ -27,6 +34,27 @@ public class Solution00019 {
         return pre.next;
     }
 
+    public static ListNode removeNthFromEnd2(ListNode head, int n) {
+        ListNode fast = head;
+        int i = 0;
+        while (i < n && fast.next != null) {
+            fast = fast.next;
+            i++;
+        }
+        if (i < n) {
+            // 说明n=链表长度，即删除第一个节点
+            return head.next;
+        }
+        ListNode slow = head;
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        slow.next = slow.next.next;
+        return head;
+    }
+
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
 //        head.next = new ListNode(2);
@@ -35,6 +63,6 @@ public class Solution00019 {
 //        head.next.next.next.next = new ListNode(5);
 //        head.next.next.next.next.next = new ListNode(6);
 
-        removeNthFromEnd(head, 1);
+        removeNthFromEnd2(head, 1);
     }
 }

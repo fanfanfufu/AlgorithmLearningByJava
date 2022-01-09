@@ -87,13 +87,17 @@ public class Solution00567 {
     public boolean checkInclusion3(String s1, String s2) {
         int n = s1.length(), m = s2.length();
         if (n > m) {
+            // 如果s1的长度大于s2的长度，则为false
             return false;
         }
+        // 存储26个字母的数量
         int[] cnt = new int[26];
+        // 对s1和s2进行统计
         for (int i = 0; i < n; ++i) {
             --cnt[s1.charAt(i) - 'a'];
             ++cnt[s2.charAt(i) - 'a'];
         }
+        // 记录不同的数量
         int diff = 0;
         for (int c : cnt) {
             if (c != 0) {
@@ -101,9 +105,11 @@ public class Solution00567 {
             }
         }
         if (diff == 0) {
+            // 如果diff为0，说明s1就是s2的字串，则为true
             return true;
         }
         for (int i = n; i < m; ++i) {
+            // x为当前位置的字符，y为n位前的字符
             int x = s2.charAt(i) - 'a', y = s2.charAt(i - n) - 'a';
             if (x == y) {
                 continue;
