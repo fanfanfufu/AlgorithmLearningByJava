@@ -33,7 +33,7 @@ public class Solution00695 {
                         continue;
                     }
                     cur++;
-                    // 将以访问过的置为0，防止重复计算
+                    // 将已经访问过的置为0，防止重复计算
                     grid[x][y] = 0;
                     for (int k = 0; k < 4; k++) {
                         int nx = x + dx[k], ny = y + dy[k];
@@ -63,17 +63,18 @@ public class Solution00695 {
     }
 
     public int dfs(int[][] grid, int cur_i, int cur_j) {
-        if (cur_i < 0 || cur_j < 0 || cur_i == grid.length || cur_j == grid[0].length || grid[cur_i][cur_j] == 0) {
+        // dfs方法需要首先对入参进行校验, 也是递归的终止条件
+        if (cur_i < 0 || cur_j < 0 || cur_i >= grid.length || cur_j >= grid[0].length || grid[cur_i][cur_j] == 0) {
             return 0;
         }
-        grid[cur_i][cur_j] = 0;
-        int[] di = {0, 0, 1, -1};
-        int[] dj = {1, -1, 0, 0};
+        // 能通过终止条件说明grid[cur_i][cur_j] == 1
         int ans = 1;
-        for (int index = 0; index != 4; index++) {
-            int next_i = cur_i + di[index], next_j = cur_j + dj[index];
-            ans += dfs(grid, next_i, next_j);
+        // 为了避免重复访问，将访问过的位置的值都改为0
+        grid[cur_i][cur_j] = 0;
+        for(int i = 0; i < 4; i++) {
+            ans += dfs(grid, cur_i+dx[i], cur_j+dy[i]);
         }
+
         return ans;
     }
 }
