@@ -29,13 +29,16 @@ public class Solution00617 {
             TreeNode left1 = cur1.left, left2 = cur2.left, right1 = cur1.right, right2 = cur2.right;
             if (left1 != null || left2 != null) {
                 if (left1 != null && left2 != null) {
+                    // 都不为空
                     ansCur.left = new TreeNode(left1.val + left2.val);
                     ansQue.offer(ansCur.left);
                     que1.offer(left1);
                     que2.offer(left2);
                 } else if (left1 == null) {
+                    // 左树的左节点为空
                     ansCur.left = left2;
                 } else {
+                    // 右树的左节点为空
                     ansCur.left = left1;
                 }
             }
