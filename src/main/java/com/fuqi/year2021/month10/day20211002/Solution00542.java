@@ -152,9 +152,11 @@ public class Solution00542 {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (i-1 >= 0) {
+                    // 先比较上方位置与当前位置距离的最小值
                     ans[i][j] = Math.min(ans[i][j], ans[i-1][j] + 1);
                 }
                 if (j-1 >= 0) {
+                    // 再比较左方位置与当前位置距离的最小值
                     ans[i][j] = Math.min(ans[i][j], ans[i][j-1] + 1);
                 }
             }
@@ -163,9 +165,11 @@ public class Solution00542 {
         for (int i = n-1; i >= 0; i--) {
             for (int j = m-1; j >= 0; j--) {
                 if (i+1 < n) {
+                    // 先比较下方位置与当前位置距离的最小值
                     ans[i][j] = Math.min(ans[i][j], ans[i+1][j] + 1);
                 }
                 if (j+1 < m) {
+                    // 再比较右方位置与当前位置距离的最小值
                     ans[i][j] = Math.min(ans[i][j], ans[i][j+1] + 1);
                 }
             }
