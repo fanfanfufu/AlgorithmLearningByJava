@@ -8,6 +8,13 @@ import com.fuqi.year2020.ListNode;
  * @description
  */
 public class Solution00021 {
+    /**
+     * 采用递归的方式实现
+     *
+     * @param list1
+     * @param list2
+     * @return
+     */
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if (list1 == null) {
             return list2;
