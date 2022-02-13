@@ -6,7 +6,7 @@ import java.util.LinkedList;
 /**
  * @author FuQi
  * @date 2022/1/11 22:30
- * @description
+ * @description 完美二叉树
  */
 public class Solution00116 {
     /**
