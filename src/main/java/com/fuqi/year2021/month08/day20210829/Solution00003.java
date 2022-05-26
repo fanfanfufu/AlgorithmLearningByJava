@@ -1,7 +1,6 @@
 package com.fuqi.year2021.month08.day20210829;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 无重复字符的最长子串
@@ -11,10 +10,10 @@ public class Solution00003 {
     public static int lengthOfLongestSubstring(String s) {
         int i = 0, j = 0;
         int ans = 0;
-        Queue<Character> window = new LinkedList<>();
+        Deque<Character> window = new LinkedList<>();
         while (i < s.length()) {
             if (!window.contains(s.charAt(i))) {
-                window.offer(s.charAt(i));
+                window.offerLast(s.charAt(i));
                 i++;
                 continue;
             }
@@ -24,7 +23,7 @@ public class Solution00003 {
                 j = i;
             } else {
                 while (window.contains(s.charAt(i))) {
-                    window.poll();
+                    window.pollFirst();
                     j++;
                 }
             }
@@ -33,6 +32,31 @@ public class Solution00003 {
         }
         ans = Math.max(ans, (i-j));
 
+        return ans;
+    }
+
+    /**
+     * 更快的写法
+     *
+     * @param s
+     * @return
+     */
+    public static int lengthOfLongestSubstring2(String s) {
+        int ans = 0;
+        // 存储每个不同字符的索引
+        Map<Character, Integer> indexMap = new HashMap<>();
+        int j = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (indexMap.containsKey(c)) {
+                // 如果索引Map已经包含了重复的字符
+                // 则计算重复字符与上一个最远不重复字符的索引大小，取索引最大，即离得最近的
+                j = Math.max(indexMap.get(c) + 1, j);
+            }
+            ans = Math.max(ans, (i - j + 1));
+            // 更新字符的位置索引
+            indexMap.put(c, i);
+        }
         return ans;
     }
 
