@@ -1,4 +1,4 @@
-package com.fuqi.year2022;
+package com.fuqi.year2022.month06;
 
 /**
  * @author FuQi
