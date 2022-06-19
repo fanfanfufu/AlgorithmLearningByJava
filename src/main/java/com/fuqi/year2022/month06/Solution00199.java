@@ -20,6 +20,12 @@ public class Solution00199 {
         return ans;
     }
 
+    /**
+     * BFS思路：取每层的最后一个即可
+     *
+     * @param ans
+     * @param root
+     */
     private void bfs(List<Integer> ans, TreeNode root) {
         if (root == null) {
             return;
