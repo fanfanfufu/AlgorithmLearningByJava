@@ -1,11 +1,9 @@
 package com.fuqi.year2022.month02;
 
-import java.util.Arrays;
-
 /**
  * @author FuQi
  * @date 2022/2/27 15:00
- * @description
+ * @description 变基距离：经典的二维DP题
  */
 public class Solution00072 {
     public int minDistance(String word1, String word2) {
