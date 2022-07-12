@@ -1,9 +1,6 @@
 package com.fuqi.year2022.month02;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author FuQi
@@ -11,7 +8,7 @@ import java.util.List;
  * @description 自己
  */
 public class Solution00078 {
-    Deque<Integer> deque = new LinkedList<>();
+    Deque<Integer> deque = new ArrayDeque<>();
     List<List<Integer>> ans = new ArrayList<>();
 
     /**
