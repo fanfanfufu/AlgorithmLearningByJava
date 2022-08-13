@@ -1,4 +1,4 @@
-package com.fuqi.year2022;
+package com.fuqi.year2022.month08;
 
 import com.fuqi.year2020.TreeNode;
 
