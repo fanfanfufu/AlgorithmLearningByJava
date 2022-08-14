@@ -18,7 +18,7 @@ public class Solution00206 {
         if (head == null) {
             return null;
         }
-        ListNode pre = new ListNode(0);
+        ListNode pre = null;
         ListNode cur = head;
 
         while (head != null) {
@@ -28,7 +28,7 @@ public class Solution00206 {
             cur = head;
         }
 
-        return pre.next;
+        return pre;
     }
 
     /**
