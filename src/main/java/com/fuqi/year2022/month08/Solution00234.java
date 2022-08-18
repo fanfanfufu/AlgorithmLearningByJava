@@ -7,7 +7,7 @@ import com.fuqi.year2020.ListNode;
  * @date 2022/8/14 22:44
  * @description  回文链表
  */
-public class Solution234 {
+public class Solution00234 {
     public boolean isPalindrome(ListNode head) {
         if (head == null || head.next == null) {
             return true;
