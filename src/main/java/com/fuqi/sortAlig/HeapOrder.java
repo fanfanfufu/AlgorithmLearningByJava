@@ -82,8 +82,11 @@ public class HeapOrder {
     }
 
     public static void main(String[] args) {
-        int[] arr = {4, 6, 8, 5, 9};
-        order(arr);
+        HeapOrder heapOrder = new HeapOrder();
+//        int[] arr = {4, 6, 8, 5, 9};
+        int[] arr = {8,7,3,5,4,6,2};
+//        order(arr);
+        heapOrder.sortArray(arr);
         for (int num : arr) {
             System.out.print(num + " ");
         }
