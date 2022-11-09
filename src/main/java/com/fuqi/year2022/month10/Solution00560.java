@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class Solution00560 {
     /**
-     * 我们定义 pre[i]pre[i] 为 [0..i][0..i] 里所有数的和，则 pre[i]pre[i] 可以由 pre[i-1]pre[i−1] 递推而来，即：
+     * 我们定义 pre[i]为 [0..i]里所有数的和，则 pre[i] 可以由 pre[i-1] 递推而来，即：
      *
      * pre[i]=pre[i−1]+nums[i]
      *
