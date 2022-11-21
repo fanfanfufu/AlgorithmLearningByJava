@@ -32,6 +32,7 @@ public class Solution00079 {
                     if (dfs(i, j, 1)) {
                         return true;
                     } else {
+                        // 回溯
                         used[i][j] = false;
                     }
                 }
@@ -65,6 +66,7 @@ public class Solution00079 {
             if (dfs(newX, newY, depth + 1)) {
                 return true;
             } else {
+                // 回溯
                 used[newX][newY] = false;
             }
         }
