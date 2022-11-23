@@ -15,7 +15,7 @@ public class Solution00040 {
             return res;
         }
 
-        // 关键步骤
+        // 关键步骤，先排序
         Arrays.sort(candidates);
 
         Deque<Integer> path = new ArrayDeque<>(len);
