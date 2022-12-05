@@ -40,4 +40,10 @@ public class Solution00047 {
             path.pollLast();
         }
     }
+
+    public static void main(String[] args) {
+        Solution00047 solution00047 = new Solution00047();
+        int[] nums = new int[]{1,2,1};
+        System.out.println(solution00047.permuteUnique(nums));
+    }
 }
