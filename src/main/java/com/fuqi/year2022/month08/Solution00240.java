@@ -66,6 +66,9 @@ public class Solution00240 {
      * @return
      */
     public boolean searchMatrix3(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
         int m = matrix.length, n = matrix[0].length;
         int i = 0, j = n - 1;
         while (i < m && j >= 0) {
