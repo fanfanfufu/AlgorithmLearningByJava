@@ -12,9 +12,11 @@ public class Solution00091 {
         dp[0] = 1;
         for (int i = 1; i <= n; i++) {
             if (s.charAt(i-1) != '0') {
-                dp[i] += dp[i-1];
+                // 1. 只看当前1位，当前下标字符的节码方法总数于前一下标的相等
+                dp[i] = dp[i-1];
             }
             if (i > 1 && s.charAt(i-2) != '0' && ((s.charAt(i-2)-'0') * 10 + (s.charAt(i-1) - '0') <=26)) {
+                // 2. 往前看两位，就需要将两位前的总数加上
                 dp[i] += dp[i-2];
             }
         }
