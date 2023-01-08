@@ -1,6 +1,7 @@
 package com.fuqi.year2022.month01;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -35,7 +36,7 @@ public class Solution00120 {
                     curLayerDistance.add(lastLayerDistance.get(curLayer.size()-2) + curDist);
                     continue;
                 }
-                // 中间的则比较从最小值
+                // 中间的则比较其中的最小值
                 int curMinDist = Math.min(lastLayerDistance.get(j - 1) + curDist, lastLayerDistance.get(j) + curDist);
                 curLayerDistance.add(curMinDist);
             }
