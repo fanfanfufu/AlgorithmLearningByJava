@@ -27,4 +27,21 @@ public class Solution00213 {
 
         return second;
     }
+
+    /**
+     * 打家劫舍优化空间复杂度的版本
+     *
+     * @param nums
+     * @return
+     */
+    public int rob2(int[] nums) {
+        int pre = 0, cur = 0;
+        for (int num : nums) {
+            int temp = Math.max(cur, pre + num);
+            pre = cur;
+            cur = temp;
+        }
+
+        return cur;
+    }
 }

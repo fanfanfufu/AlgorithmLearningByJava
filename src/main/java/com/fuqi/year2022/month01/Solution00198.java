@@ -3,7 +3,7 @@ package com.fuqi.year2022.month01;
 /**
  * @author FuQi
  * @date 2022/1/16 18:13
- * @description
+ * @description 打家劫舍
  */
 public class Solution00198 {
     public int rob(int[] nums) {
