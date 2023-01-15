@@ -1,5 +1,7 @@
 package com.fuqi.year2021.month08.day20210829;
 
+import org.junit.jupiter.api.Assertions;
+
 import java.util.*;
 
 /**
@@ -62,16 +64,16 @@ public class Solution00003 {
 
     public static void main(String[] args) {
         // 8
-        System.out.println(lengthOfLongestSubstring("dvpedfqmt"));
+        Assertions.assertEquals(8, lengthOfLongestSubstring2("dvpedfqmt"));
         // 5
-        System.out.println(lengthOfLongestSubstring("ckilbkd"));
+        Assertions.assertEquals(5, lengthOfLongestSubstring2("ckilbkd"));
         // 1
-        System.out.println(lengthOfLongestSubstring(" "));
+        Assertions.assertEquals(1, lengthOfLongestSubstring2(" "));
         // 1
-        System.out.println(lengthOfLongestSubstring("bbbbbb"));
+        Assertions.assertEquals(1, lengthOfLongestSubstring2("bbbbbb"));
         // 3
-        System.out.println(lengthOfLongestSubstring("pwwkew"));
+        Assertions.assertEquals(3, lengthOfLongestSubstring2("pwwkew"));
         // 3
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        Assertions.assertEquals(3, lengthOfLongestSubstring2("abcabcbb"));
     }
 }
