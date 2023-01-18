@@ -13,12 +13,29 @@ public class Solution00053 {
         }
         if (nums.length == 1) {
             return nums[0];
-        }int ans = nums[0];
+        }
+        int ans = nums[0];
         for (int num : nums) {
             sum = Math.max(sum+num, num);
             ans = Math.max(ans, sum);
         }
 
         return ans;
+    }
+
+    /**
+     * pre表示i结尾的数组的连续子数组的最大和
+     *
+     * @param nums
+     * @return
+     */
+    public int maxSubArray2(int[] nums) {
+        int pre = 0, maxAns = nums[0];
+        for (int num : nums) {
+            pre = Math.max(pre + num, num);
+            maxAns = Math.max(maxAns, pre);
+        }
+
+        return maxAns;
     }
 }
