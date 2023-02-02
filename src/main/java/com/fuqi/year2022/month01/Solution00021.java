@@ -15,7 +15,7 @@ public class Solution00021 {
      * @param list2
      * @return
      */
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    public ListNode mergeTwoListsDFS(ListNode list1, ListNode list2) {
         if (list1 == null) {
             return list2;
         }
@@ -30,8 +30,48 @@ public class Solution00021 {
             head = list1;
             list1 = list1.next;
         }
-        head.next = mergeTwoLists(list1,list2);
+        head.next = mergeTwoListsDFS(list1,list2);
 
         return head;
+    }
+
+    /**
+     * 采用非递归的方式实现
+     *
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        if (list1 == null) return list2;
+        if (list2 == null) return list1;
+
+        ListNode head = new ListNode(1);
+        ListNode cur = head;
+        while (list1 != null || list2 != null) {
+            if (list1 == null) {
+                cur.next = list2;
+                cur = cur.next;
+                list2 = list2.next;
+                continue;
+            }
+            if (list2 == null) {
+                cur.next = list1;
+                cur = cur.next;
+                list1 = list1.next;
+                continue;
+            }
+            if (list1.val < list2.val) {
+                cur.next = list1;
+                cur = cur.next;
+                list1 = list1.next;
+                continue;
+            }
+            cur.next = list2;
+            cur = cur.next;
+            list2 = list2.next;
+        }
+
+        return head.next;
     }
 }
