@@ -7,13 +7,12 @@ package com.fuqi.year2022.month02;
  */
 public class Solution00300 {
     public static int lengthOfLIS(int[] nums) {
-        if (nums.length == 0) {
-            return 0;
-        }
-        int[] dp = new int[nums.length];
+        int len = nums.length;
+        if (len < 2) return len;
+        int[] dp = new int[len];
         dp[0] = 1;
         int ans = 1;
-        for (int i = 1; i < nums.length; i++) {
+        for (int i = 1; i < len; i++) {
             dp[i] = 1;
             for (int j = 0; j < i; j++) {
                 if (nums[i] > nums[j]) {
@@ -23,6 +22,7 @@ public class Solution00300 {
             }
             ans = Math.max(ans, dp[i]);
         }
+
         return ans;
     }
 
