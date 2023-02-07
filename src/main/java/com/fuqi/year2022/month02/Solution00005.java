@@ -42,41 +42,30 @@ public class Solution00005 {
 
     public String longestPalindrome2(String s) {
         int len = s.length();
-        if (len < 2) {
-            return s;
-        }
+        if (len < 2) return s;
 
         int maxLen = 1;
         int begin = 0;
         boolean[][] dp = new boolean[len][len];
-        for (int i = 0; i < len; i++) {
-            dp[i][i] = true;
-        }
+        for (int i = 0; i < len; i++) dp[i][i] = true;
 
-        char[] charArray = s.toCharArray();
-        // L代表字串长度
-        for (int L = 2; L <= len; L++) {
-            // i位左端点
-            for (int i = 0; i < len; i++) {
-                // j 为右端点
-                int j = L + i - 1;
-                if (j >= len) {
-                    break;
-                }
+        char[] charArr = s.toCharArray();
+        for (int curLen = 2; curLen <= len; curLen++) {
+            for (int left = 0; left < len; left++) {
+                int right = left + curLen - 1;
+                if (right >= len) break;
 
-                if (charArray[i] != charArray[j]) {
-                    dp[i][j] = false;
-                } else {
-                    if (j-i < 3) {
-                        dp[i][j] = true;
+                if (charArr[left] == charArr[right]) {
+                    if (right - left < 3) {
+                        dp[left][right] = true;
                     } else {
-                        dp[i][j] = dp[i+1][j-1];
+                        dp[left][right] = dp[left+1][right-1];
                     }
                 }
 
-                if (dp[i][j] && j-i+1 > maxLen) {
-                    maxLen = j-i+1;
-                    begin = i;
+                if(dp[left][right] && right-left+1 > maxLen) {
+                    maxLen = right-left+1;
+                    begin = left;
                 }
             }
         }
