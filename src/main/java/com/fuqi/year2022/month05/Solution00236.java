@@ -8,6 +8,24 @@ import com.fuqi.year2020.TreeNode;
  * @description
  */
 public class Solution00236 {
+    /**
+     * 思路：
+     * 1. 判断p/q是否再root.left中，通过p/q的值与遍历到的node的值比较，相等则返回对应的node
+     * 2. 再判断p/q是否在root.right中
+     * 3. 如果步骤1满足，2不满足，则说明最近的公共节点为root.left
+     * 4. 如果步骤2满足，1不满足，则说明最近的公共节点为root.right
+     * 5. 如果1，2同时满足，说明左右子树各有一个节点，因此最近的公共祖先就是当前的root
+     *
+     * 递归终止：
+     * 1. root == null
+     * 2. root.val == p.val || root.val == q.val
+     *
+     *
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) {
             return null;
