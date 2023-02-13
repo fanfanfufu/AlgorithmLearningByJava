@@ -31,6 +31,8 @@ public class Solution00047 {
 
         for (int i = 0; i < nums.length; i++) {
             if (used[i] || (i > 0 && nums[i] == nums[i-1] && !used[i-1])) {
+                // 去重去的是第二个相同的数与前一个排列在相同位置的情况
+                // 例如：112中，当第二个1按照不去重的逻辑要被取出作为新的排列的第一个元素时，就可以跳过了
                 continue;
             }
             path.add(nums[i]);
