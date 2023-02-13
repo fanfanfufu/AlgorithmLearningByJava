@@ -33,11 +33,11 @@ public class Solution00046 {
             if (used[i]) {
                 continue;
             }
-            path.add(nums[i]);
+            path.offerFirst(nums[i]);
             used[i] = true;
             dfs(nums, depth+1, path, used, ans);
             used[i] = false;
-            path.removeLast();
+            path.pollFirst();
         }
     }
 }
