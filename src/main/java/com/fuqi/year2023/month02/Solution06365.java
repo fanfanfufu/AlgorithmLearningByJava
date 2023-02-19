@@ -7,8 +7,9 @@ package com.fuqi.year2023.month02;
  */
 public class Solution06365 {
     public int minOperations(int n) {
+        // 特殊的1，2，直接返回
         if (n < 3) return 1;
-        int[] dp = new int[n+1];
+        int[] dp = new int[n + 1];
         dp[0] = 1;
         dp[1] = 1;
         dp[2] = 1;
@@ -16,12 +17,13 @@ public class Solution06365 {
             String binaryString = Integer.toBinaryString(i);
             int bitLen = binaryString.length();
             int upper = 1 << bitLen;
-            int lower= 1 << (bitLen - 1);
+            int lower = 1 << (bitLen - 1);
             if (i == lower) {
+                // i刚好为一个2的幂次的数，那么其消解为0的最小操作次数就是1
                 dp[i] = 1;
                 continue;
             }
-            dp[i] = Math.min(dp[upper-i], dp[i-lower]) + 1;
+            dp[i] = Math.min(dp[upper - i], dp[i - lower]) + 1;
         }
 
         return dp[n];
