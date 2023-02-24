@@ -3,7 +3,7 @@ package com.fuqi.year2023.month02;
 /**
  * @author FuQi
  * @date 2023/2/18 23:24
- * @description
+ * @description 会运算无法表达的最小数
  */
 public class Solution06360 {
     public int minImpossibleOR(int[] nums) {
