@@ -48,6 +48,14 @@ public class Solution00092 {
         head.next = null;
     }
 
+    /**
+     * 头插法，一定要注意翻转的几个步骤的执行顺序
+     *
+     * @param head
+     * @param left
+     * @param right
+     * @return
+     */
     public ListNode reverseBetween2(ListNode head, int left, int right) {
         ListNode dummyNode = new ListNode(0);
         dummyNode.next = head;
@@ -61,9 +69,13 @@ public class Solution00092 {
         ListNode cur = pre.next;
 
         for (int i = 0; i < right - left; i++) {
+            // 1. 保存当前需要翻转的节点
             ListNode temp = cur.next;
+            // 2. 先建立翻转后尾部节点与整个链表后续节点的连接
             cur.next = temp.next;
+            // 3. 建立reverse节点的next关系
             temp.next = pre.next;
+            // 4. 接回整个链表
             pre.next = temp;
         }
 
