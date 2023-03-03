@@ -41,4 +41,18 @@ public class Solution2437 {
         }
         return sum;
     }
+
+    public int countTime1(String time) {
+        char[] timeArr = time.toCharArray();
+        int hour = 1, minute = 1;
+        if (timeArr[0] == '?' && timeArr[1] == '?') hour = 24;
+        else if (timeArr[0] == '?') hour = timeArr[1] < '4' ? 3 : 2;
+        else if (timeArr[1] == '?') hour = timeArr[0] < '2' ? 10 : 4;
+
+        if (timeArr[3] == '?' && timeArr[4] == '?') minute = 60;
+        else if (timeArr[3] == '?') minute = 6;
+        else if (timeArr[4] == '?') minute = 10;
+
+        return hour * minute;
+    }
 }
