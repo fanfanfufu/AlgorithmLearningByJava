@@ -5,7 +5,7 @@ package com.fuqi.year2023.month03;
  * @date 2023/3/2 22:02
  * @description
  */
-public class Solution2437 {
+public class Solution02437 {
     public int countTime(String time) {
         if (!time.contains("?")) return 1;
         int sum = 1;
