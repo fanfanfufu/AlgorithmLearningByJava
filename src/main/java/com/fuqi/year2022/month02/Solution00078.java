@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * @author FuQi
  * @date 2022/2/15 20:47
- * @description 自己
+ * @description 子集
  */
 public class Solution00078 {
     Deque<Integer> deque = new ArrayDeque<>();
@@ -63,7 +63,7 @@ public class Solution00078 {
     public static void main(String[] args) {
         int[] nums = new int[]{1,2,3};
         Solution00078 solution00078 = new Solution00078();
-        List<List<Integer>> subsets = solution00078.subsets2(nums);
+        List<List<Integer>> subsets = solution00078.subsets(nums);
         System.out.println("done");
     }
 }
