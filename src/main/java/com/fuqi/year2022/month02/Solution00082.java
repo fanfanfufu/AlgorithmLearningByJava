@@ -56,8 +56,10 @@ public class Solution00082 {
                 cur = cur.next;
             }
             // 将重复的部分删掉
-            pre.next = cur.next;
-            cur = pre.next;
+//            pre.next = cur.next;
+//            cur = pre.next;
+            cur = cur.next;
+            pre.next = cur;
         }
 
         return ans.next;
