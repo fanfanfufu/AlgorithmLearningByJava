@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 /**
  * @author FuQi
  * @date 2022/1/23 22:02
- * @description
+ * @description 三数之和：相向双指针
  */
 public class Solution00015 {
     public static List<List<Integer>> threeSum2(int[] nums) {
@@ -84,6 +84,36 @@ public class Solution00015 {
                 else R--;
             }
         }
+        return ans;
+    }
+
+    public List<List<Integer>> threeSum3(int[] nums) {
+        List<List<Integer>> ans = new ArrayList();
+        int n = nums.length;
+        if (n < 3) return ans;
+        Arrays.sort(nums);
+        if (nums[0] > 0 || nums[n-1] < 0) return ans;
+        for (int i = 0; i < n-2; i++) {
+            if (i > 0 && nums[i] == nums[i-1]) continue;
+            int x = nums[i];
+            // 如果当前数与之后的最小的两个数之和大于0，则往后的三数之和都是大于0的，因此直接中止循环
+            if (x + nums[i+1] + nums[i+2] > 0) break;
+            // 如果当前数与之后的最大的两个数之和小于0，则往后的三数之后都是小于0的，因此需要遍历下一个数
+            if (x + nums[n-1] + nums[n-2] < 0) continue;
+            int left = i + 1, right = n - 1;
+            while (left < right) {
+                int sum = x + nums[left] + nums[right];
+                if (sum == 0) {
+                    ans.add(Stream.of(nums[i], nums[left], nums[right]).collect(Collectors.toList()));
+                    left++;
+                    while (left < right && nums[left] == nums[left-1]) left++;
+                    right--;
+                    while (left < right && nums[right] == nums[right+1]) right--;
+                } else if (sum < 0) left++;
+                else right--;
+            }
+        }
+
         return ans;
     }
 
