@@ -81,4 +81,30 @@ public class Solution00092 {
 
         return dummyNode.next;
     }
+
+    public ListNode reverseBetween3(ListNode head, int left, int right) {
+        ListNode dummyNode = new ListNode(0);
+        dummyNode.next = head;
+
+        ListNode pre = dummyNode;
+
+        for (int i = 0; i < left - 1; i++) {
+            pre = pre.next;
+        }
+
+        ListNode cur = pre.next;
+        ListNode tail = null;
+
+        for (int i = 0; i < right - left + 1; i++) {
+            ListNode temp = cur.next;
+            cur.next = tail;
+            tail = cur;
+            cur = temp;
+        }
+        // 接回原链表
+        pre.next.next = cur;
+        pre.next = tail;
+
+        return dummyNode.next;
+    }
 }
