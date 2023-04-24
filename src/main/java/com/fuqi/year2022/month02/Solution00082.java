@@ -68,6 +68,7 @@ public class Solution00082 {
     public ListNode deleteDuplicates3(ListNode head) {
         if (head == null) return null;
         ListNode dummyHead = new ListNode(-101);
+        // pre勇于记录需要删除的重复值节点的前面的节点，方便删除玩重复的节点之后将链表再接上
         ListNode pre = dummyHead;
         pre.next = head;
         ListNode cur = head;
