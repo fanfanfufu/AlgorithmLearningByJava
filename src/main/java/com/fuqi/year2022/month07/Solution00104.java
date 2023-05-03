@@ -48,4 +48,13 @@ public class Solution00104 {
 
         return depth;
     }
+
+    public int maxDepth2(TreeNode root) {
+        if (root == null) return 0;
+
+        int leftDepth = maxDepth2(root.left);
+        int rightDepth = maxDepth2(root.right);
+
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
 }
