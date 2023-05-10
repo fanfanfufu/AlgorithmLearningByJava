@@ -60,6 +60,27 @@ public class Solution00078 {
         return ans;
     }
 
+    public List<List<Integer>> subsetsDfs(int[] nums) {
+        int n = nums.length, start = 0;
+        List<List<Integer>> ans = new ArrayList<>();
+        Deque<Integer> path = new ArrayDeque<>();
+
+        dfs(start, n, nums, ans, path);
+
+        return ans;
+    }
+
+    private void dfs(int start, int n, int[] nums, List<List<Integer>> ans, Deque<Integer> path) {
+        ans.add(new ArrayList<>(path));
+        if (start == n) return;
+
+        for (int i = start; i < n; i++) {
+            path.offerLast(nums[i]);
+            dfs(i+1, n, nums, ans, path);
+            path.pollLast();
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums = new int[]{1,2,3};
         Solution00078 solution00078 = new Solution00078();
