@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * @author FuQi
  * @date 2022/2/15 20:47
- * @description 自己
+ * @description 子集
  */
 public class Solution00078 {
     Deque<Integer> deque = new ArrayDeque<>();
@@ -60,10 +60,31 @@ public class Solution00078 {
         return ans;
     }
 
+    public List<List<Integer>> subsetsDfs(int[] nums) {
+        int n = nums.length, start = 0;
+        List<List<Integer>> ans = new ArrayList<>();
+        Deque<Integer> path = new ArrayDeque<>();
+
+        dfs(start, n, nums, ans, path);
+
+        return ans;
+    }
+
+    private void dfs(int start, int n, int[] nums, List<List<Integer>> ans, Deque<Integer> path) {
+        ans.add(new ArrayList<>(path));
+        if (start == n) return;
+
+        for (int i = start; i < n; i++) {
+            path.offerLast(nums[i]);
+            dfs(i+1, n, nums, ans, path);
+            path.pollLast();
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums = new int[]{1,2,3};
         Solution00078 solution00078 = new Solution00078();
-        List<List<Integer>> subsets = solution00078.subsets2(nums);
+        List<List<Integer>> subsets = solution00078.subsets(nums);
         System.out.println("done");
     }
 }

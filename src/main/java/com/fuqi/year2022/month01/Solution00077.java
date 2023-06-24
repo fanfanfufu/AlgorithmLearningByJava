@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author FuQi
  * @date 2022/1/15 16:41
- * @description
+ * @description 组合问题
  */
 public class Solution00077 {
     public List<List<Integer>> combine(int n, int k) {

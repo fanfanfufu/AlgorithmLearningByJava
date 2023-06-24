@@ -51,9 +51,5 @@ public class Main2 {
     }
 
     public static void main(String[] args) {
-        String str = "abcabaabaabcacb";
-        String match = "abaabcac";
-        System.out.println(getIndexOf(str, match));
-
     }
 }

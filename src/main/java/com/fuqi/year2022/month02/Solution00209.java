@@ -37,6 +37,7 @@ public class Solution00209 {
     /**
      * 滑动窗口优化
      * 省掉采用队列结构操作数据得耗时
+     * 同向双指针
      *
      * @param target
      * @param nums

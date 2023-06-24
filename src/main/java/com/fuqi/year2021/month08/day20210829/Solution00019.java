@@ -55,6 +55,26 @@ public class Solution00019 {
         return head;
     }
 
+    public ListNode removeNthFromEnd3(ListNode head, int n) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode tail = dummy;
+        for (int i = 0; i < n; i++) {
+            tail = tail.next;
+        }
+        ListNode pre = dummy;
+        // 这里不需要判断tail是否为空是因为输入的n最大为链表本来的长度，因为最前面补充了一个dummy节点
+        // 结果遍历后tail一定不会为空
+        while (tail.next != null) {
+            tail = tail.next;
+            pre = pre.next;
+        }
+        // 执行删除操作
+        pre.next = pre.next.next;
+
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
 //        head.next = new ListNode(2);

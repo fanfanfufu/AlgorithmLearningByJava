@@ -1,9 +1,6 @@
 package com.fuqi.year2022.month02;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author FuQi
@@ -43,6 +40,64 @@ public class Solution00017 {
             combination.append(letters.charAt(i));
             backtrack(combinations, phoneMap, digits, index+1, combination);
             combination.deleteCharAt(index);
+        }
+    }
+
+    private String[] alphaMap = new String[]{"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
+    /**
+     * BFS的实现
+     *
+     * @param digits
+     * @return
+     */
+    public List<String> letterCombinationsBfs(String digits) {
+        Deque<String> path = new LinkedList<>();
+        int n = digits.length();
+
+        for (int i = 0; i < n; i++) {
+            int number = digits.charAt(i) - '2';
+            String alphaStr = alphaMap[number];
+            int curLen = path.size();
+            if (curLen == 0) {
+                for (char alpha : alphaStr.toCharArray()) {
+                    path.offerLast(String.valueOf(alpha));
+                }
+                continue;
+            }
+            for (int j = 0; j < curLen; j++) {
+                String cur = path.pollFirst();
+                for (char alpha : alphaStr.toCharArray()) {
+                    path.offerLast(cur + alpha);
+                }
+            }
+        }
+
+        return new ArrayList<>(path);
+    }
+
+    public List<String> letterCombinationsDfs(String digits) {
+        List<String> ans = new ArrayList<>();
+        if (digits == null || digits.length() == 0) return ans;
+        Deque<String> path = new LinkedList<>();
+        int len = digits.length();
+        int index = 0;
+
+        dfs(ans, digits, index, len, path);
+
+        return ans;
+    }
+
+    private void dfs(List<String> ans, String digits, int index, int len, Deque<String> path) {
+        if (index == len) {
+            ans.add(String.join("", path));
+            return;
+        }
+        int number = digits.charAt(index) - '2';
+        for (char alpha : alphaMap[number].toCharArray()) {
+            path.offerLast(String.valueOf(alpha));
+            dfs(ans, digits, index+1, len, path);
+            path.pollLast();
         }
     }
 }

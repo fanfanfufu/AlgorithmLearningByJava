@@ -10,7 +10,7 @@ import com.fuqi.year2020.TreeNode;
 public class Solution00124 {
     private int maxSum = Integer.MIN_VALUE;
 
-    public int maxPathSum(TreeNode root) {
+    public int maxPathSum1(TreeNode root) {
         maxGain(root);
 
         return maxSum;
@@ -29,5 +29,21 @@ public class Solution00124 {
         maxSum = Math.max(maxSum, maxPath);
 
         return root.val + Math.max(leftGain, rightGain);
+    }
+
+    /**
+     * 只适合从头节点出发
+     *
+     * @param root
+     * @return
+     */
+    public int maxPathSum2(TreeNode root) {
+        if (root.left == null && root.right == null) return root.val;
+
+        int subMax = Integer.MIN_VALUE;
+        if (root.left != null) subMax = maxPathSum2(root.left);
+        if (root.right != null) subMax = Math.max(subMax, maxPathSum2(root.right));
+
+        return subMax + root.val;
     }
 }

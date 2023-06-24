@@ -11,8 +11,14 @@ import java.util.List;
  * @description 重排链表
  */
 public class Solution00143 {
+    /**
+     * 暴力解法：时间复杂度O(n^2)
+     *
+     * @param head
+     */
     public void reorderList(ListNode head) {
         ListNode cur = head;
+        // 每次都要向后遍历一遍
         while (cur != null && cur.next != null) {
             ListNode pre = cur;
             ListNode tail = pre.next;
@@ -48,8 +54,11 @@ public class Solution00143 {
         }
         ListNode postHead = slow;
         if (fast == null) {
+            // 偶数个节点时，fast会走到null
             pre.next = null;
         } else {
+            // 奇数个节点时，fast节点会走到最后一个节点上
+            // 此时需要翻转的部分是slow节点之后的部分
             postHead = slow.next;
             slow.next = null;
         }
@@ -78,6 +87,11 @@ public class Solution00143 {
         return pre;
     }
 
+    /**
+     *  现存储再拼接
+     *
+     * @param head
+     */
     public void reorderList2(ListNode head) {
         if (head == null) {
             return;
@@ -98,10 +112,21 @@ public class Solution00143 {
             nodeList.get(j).next = nodeList.get(i);
             j--;
         }
+        // 最后拼接上最后元素的next为空
         nodeList.get(i).next = null;
     }
 
-    public void reorderList3(ListNode head) {
-
+    public static void main(String[] args) {
+        ListNode one = new ListNode(1);
+        ListNode two = new ListNode(2);
+        ListNode three = new ListNode(3);
+        ListNode four = new ListNode(4);
+        ListNode five = new ListNode(5);
+        one.next = two;
+        two.next = three;
+        three.next = four;
+//        four.next = five;
+        Solution00143 solution00143 = new Solution00143();
+        solution00143.reorderList1(one);
     }
 }

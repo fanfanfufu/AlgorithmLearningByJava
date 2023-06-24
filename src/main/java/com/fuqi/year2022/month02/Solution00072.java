@@ -3,7 +3,7 @@ package com.fuqi.year2022.month02;
 /**
  * @author FuQi
  * @date 2022/2/27 15:00
- * @description 变基距离：经典的二维DP题
+ * @description 编辑距离：经典的二维DP题
  */
 public class Solution00072 {
     public int minDistance(String word1, String word2) {
@@ -21,13 +21,16 @@ public class Solution00072 {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
-                int left = dp[i][j-1] + 1;
-                int up = dp[i-1][j] + 1;
-                int left_up = dp[i-1][j-1];
-                if (word1.charAt(i-1) != word2.charAt(j-1)) {
-                    left_up += 1;
-                }
-                dp[i][j] = Math.min(left_up, Math.min(left, up));
+                int distance1 = Math.min(dp[i][j - 1], dp[i - 1][j]) + 1;
+                int distance2 = word1.charAt(i-1) == word2.charAt(j-1) ? dp[i-1][j-1] : dp[i-1][j-1]+1;
+                dp[i][j] = Math.min(distance1, distance2);
+//                int left = dp[i][j-1] + 1;
+//                int up = dp[i-1][j] + 1;
+//                int left_up = dp[i-1][j-1];
+//                if (word1.charAt(i-1) != word2.charAt(j-1)) {
+//                    left_up += 1;
+//                }
+//                dp[i][j] = Math.min(left_up, Math.min(left, up));
             }
         }
 

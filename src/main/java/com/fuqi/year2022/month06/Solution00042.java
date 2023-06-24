@@ -11,26 +11,28 @@ import java.util.LinkedList;
 public class Solution00042 {
     /**
      * 双指针解法
+     * 动态规划的空间复杂度优化版
      *
      * @param height
      * @return
      */
     public int trap(int[] height) {
+        int n = height.length;
+        if (n == 0) return 0;
+
+        int left = 0, right = n-1;
+        int leftMax = height[left], rightMax = height[right];
         int ans = 0;
-        int leftMax = height[0], rightMax = height[height.length-1];
-        int left = 1, right = height.length-2;
-        while (left <= right) {
-            if (height[left-1] < height[right+1]) {
-                leftMax = Math.max(height[left-1], leftMax);
-                if (leftMax > height[left]) {
-                    ans += leftMax-height[left];
-                }
+        while (left < right) {
+            int leftHeight = height[left];
+            int rightHeight = height[right];
+            if (leftHeight < rightHeight) {
+                leftMax = Math.max(leftHeight, leftMax);
+                ans += leftMax - leftHeight;
                 left++;
             } else {
-                rightMax = Math.max(rightMax, height[right+1]);
-                if (rightMax > height[right]) {
-                    ans += rightMax-height[right];
-                }
+                rightMax = Math.max(rightHeight, rightMax);
+                ans += rightMax - rightHeight;
                 right--;
             }
         }
@@ -66,5 +68,25 @@ public class Solution00042 {
             stack.offerFirst(i);
         }
         return res;
+    }
+
+    public int trap3(int[] height) {
+        int n = height.length;
+        if (n == 0) return 0;
+        
+        int[] leftMax = new int[n];
+        leftMax[0] = height[0];
+        for (int i = 1; i < n; i++) leftMax[i] = Math.max(leftMax[i-1], height[i]);
+        
+        int[] rightMax = new int[n];
+        rightMax[n-1] = height[n-1];
+        for (int i = n-2; i >= 0; i--) rightMax[i] = Math.max(rightMax[i+1], height[i]);
+
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            ans += Math.min(leftMax[i], rightMax[i]) - height[i];
+        }
+
+        return ans;
     }
 }
