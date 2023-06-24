@@ -26,8 +26,6 @@ public class HuaWei0013 {
                 alterOutput.add(alter);
                 continue;
             }
-            // 如果当前告警已经出现过了，则直接跳过
-            if (alterOutput.contains(alter)) continue;
             if (!alterRelationMap.containsKey(alter)) {
                 alterOutput.add(alter);
                 continue;

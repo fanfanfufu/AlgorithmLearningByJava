@@ -6,7 +6,7 @@ import java.util.LinkedList;
 /**
  * @author FuQi
  * @date 2022/11/14 22:01
- * @description
+ * @description 移掉k个数字
  */
 public class Solution00402 {
     public String removeKdigits(String num, int k) {
@@ -36,5 +36,13 @@ public class Solution00402 {
         }
 
         return ans.length() == 0 ? "0" : ans.toString();
+    }
+
+    public static void main(String[] args) {
+        Solution00402 solution00402 = new Solution00402();
+        String num = "1100300";
+        int k = 2;
+        String result = solution00402.removeKdigits(num, k);
+        System.out.println(result);
     }
 }
