@@ -1,7 +1,5 @@
 package com.fuqi.year2023.month06;
 
-import com.fuqi.year2022.month11.Solution00402;
-
 /**
  * @author fanfanfufu
  * @version 1.0
@@ -9,6 +7,14 @@ import com.fuqi.year2022.month11.Solution00402;
  * @description 构造最长的新字符串
  */
 public class Solution06895 {
+    /**
+     * 暴力解法：超时
+     *
+     * @param x
+     * @param y
+     * @param z
+     * @return
+     */
     public int longestString(int x, int y, int z) {
         int ans1 = dfs(x - 1, y, z, "AA", 2);
         int ans2 = dfs(x, y - 1, z, "BB", 2);
