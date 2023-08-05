@@ -3,7 +3,7 @@ package com.fuqi.year2022.month12;
 /**
  * @author FuQi
  * @date 2022/12/28 21:51
- * @description
+ * @description 验证回文串
  */
 public class Solution00125 {
     public boolean isPalindrome(String s) {
