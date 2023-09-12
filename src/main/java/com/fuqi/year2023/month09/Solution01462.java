@@ -35,6 +35,7 @@ public class Solution01462 {
         for (int i = 0; i < numCourses; i++) {
             if (indegress[i] == 0) deque.offerLast(i);
         }
+        // isPre[x][y]表示x是否是y的直接或间接先决条件
         boolean[][] isPre = new boolean[numCourses][numCourses];
 
         while (!deque.isEmpty()) {
