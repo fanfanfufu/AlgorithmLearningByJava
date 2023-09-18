@@ -1,5 +1,7 @@
 package com.fuqi.year2023.month09;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +58,31 @@ public class Solution06988 {
             map1.put(y, map1.getOrDefault(y, 0) + 1);
         }
         return cnt;
+    }
+
+
+    public static void main(String[] args) {
+        String adId = "-6727717";
+        System.out.println(Arrays.toString(adId.getBytes(StandardCharsets.UTF_8)));
+        int adIdInt = Integer.parseInt(adId);
+        System.out.println("int value binary: " + Integer.toBinaryString(adIdInt));
+        byte[] intToBytes = intToBytes(adIdInt);
+        System.out.println(Arrays.toString(intToBytes));
+    }
+
+    /**
+     * 高位在左，低位在右
+     *
+     * @param value
+     * @return
+     */
+    public static byte[] intToBytes(int value) {
+        byte[] src = new byte[4];
+        src[0] = (byte) ((value>>24) & 0xFF);
+        src[1] = (byte) ((value>>16)& 0xFF);
+        src[2] = (byte) ((value>>8)&0xFF);
+        src[3] = (byte) (value & 0xFF);
+        return src;
     }
 
 }
