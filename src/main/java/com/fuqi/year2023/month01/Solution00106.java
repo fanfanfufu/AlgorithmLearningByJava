@@ -51,8 +51,8 @@ public class Solution00106 {
         int inorderMid = idx_map.get(rootVal);
         int leftTreeLen = inorderMid - inorderLeft;
 
-        root.left = dfs(inorder, postorder, inorderLeft, inorderMid-1, postorderLeft, postorderLeft+leftTreeLen-1);
-        root.right = dfs(inorder, postorder, inorderMid+1, inorderRight, postorderLeft+leftTreeLen, postorderRight-1);
+        root.left = helper(inorder, postorder, inorderLeft, inorderMid-1, postorderLeft, postorderLeft+leftTreeLen-1);
+        root.right = helper(inorder, postorder, inorderMid+1, inorderRight, postorderLeft+leftTreeLen, postorderRight-1);
 
         return root;
     }
