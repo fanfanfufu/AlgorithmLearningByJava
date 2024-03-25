@@ -58,10 +58,10 @@ public class Solution00219 {
 
     /**
      * 优化一
-     * hashMap存储元素最新的坐标即可，
-     * 如果遇到hashMap中有的key，则判断与最近的index的距离是否满足条件即可，
+     * hashMap存储元素最早的坐标即可，
+     * 如果遇到hashMap中有的key，则判断与最远的index的距离是否满足条件即可，
      * 满足则返回true，
-     * 不满足则将最新的index放入hashMap中，并遍历下一个数字，
+     * 不满足则将最早的index放入hashMap中，并遍历下一个数字，
      * 直至遍历完，最后没有则返回false
      *
      * @param nums
