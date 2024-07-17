@@ -24,7 +24,7 @@ public class Solution00019 {
         }
 
         ListNode second = pre;
-        while (first !=null) {
+        while (first.next !=null) {
             first = first.next;
             second = second.next;
         }
