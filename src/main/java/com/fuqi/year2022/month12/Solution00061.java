@@ -74,4 +74,30 @@ public class Solution00061 {
 
         return ans;
     }
+    public ListNode rotateRight3(ListNode head, int k) {
+        if (k == 0 || head == null || head.next == null) {
+            return head;
+        }
+        // 记录链表的长度
+        int len = 0;
+        for (ListNode cur = head; cur != null; cur = cur.next) len++;
+        k = k % len;
+        if (k == 0) {
+            return head;
+        }
+        ListNode end = head;
+        for (int i = 0; i < k; i++) {
+            end = end.next;
+        }
+        ListNode start = head;
+        while(end.next != null) {
+            start = start.next;
+            end = end.next;
+        }
+        end.next = head;
+        head = start.next;
+        start.next = null;
+
+        return head;
+    }
 }
