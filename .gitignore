@@ -79,3 +79,8 @@ datastructurelearn/target/
 target/
 /algorithmexercises.iml
 /.idea/*
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
