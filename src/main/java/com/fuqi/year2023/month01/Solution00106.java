@@ -13,6 +13,11 @@ import java.util.Map;
 public class Solution00106 {
     private Map<Integer, Integer> idx_map = new HashMap<>();
 
+    /**
+     * @param inorder 中序遍历数组
+     * @param postorder 后序遍历数组
+     * @return 构造的二叉树的根节点
+     */
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         if (inorder.length == 1) {
             return new TreeNode(inorder[0]);
@@ -29,13 +34,13 @@ public class Solution00106 {
      * 借助一个中序遍历元素的索引map
      * (比较依赖每个节点的值都不同这个条件)
      *
-     * @param inorder
-     * @param postorder
-     * @param inorderLeft
-     * @param inorderRight
-     * @param postorderLeft
-     * @param postorderRight
-     * @return
+     * @param inorder 中序遍历数组
+     * @param postorder 后序遍历数组
+     * @param inorderLeft 中序遍历数组左边界
+     * @param inorderRight 中序遍历数组右边界
+     * @param postorderLeft 后序遍历数组左边界
+     * @param postorderRight 后序遍历数组右边界
+     * @return 构造的二叉树的根节点
      */
     private TreeNode helper(int[] inorder, int[] postorder, int inorderLeft, int inorderRight, int postorderLeft, int postorderRight) {
         // 递归终止条件
@@ -45,11 +50,13 @@ public class Solution00106 {
         if (inorderLeft == inorderRight) {
             return new TreeNode(inorder[inorderLeft]);
         }
+        // 后序遍历数组的最后一个元素就是根节点
         int rootVal = postorder[postorderRight];
         TreeNode root = new TreeNode(rootVal);
-        // 得到根节点在inorder中的位置
+        // 得到根节点在inorder中的位置，从而得到左子树的长度
         int inorderMid = idx_map.get(rootVal);
         int leftTreeLen = inorderMid - inorderLeft;
+        // 递归构造左子树和右子树
 
         root.left = helper(inorder, postorder, inorderLeft, inorderMid-1, postorderLeft, postorderLeft+leftTreeLen-1);
         root.right = helper(inorder, postorder, inorderMid+1, inorderRight, postorderLeft+leftTreeLen, postorderRight-1);
